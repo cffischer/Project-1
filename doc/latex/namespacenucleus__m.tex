@@ -1,0 +1,86 @@
+\hypertarget{namespacenucleus__m}{}\section{nucleus\+\_\+m Module Reference}
+\label{namespacenucleus__m}\index{nucleus\_m@{nucleus\_m}}
+\subsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+real(8) function \mbox{\hyperlink{namespacenucleus__m_aa70383e98e9176269442449160eaaea0}{rrms\+\_\+value}} (iz, a)
+\begin{DoxyCompactList}\small\item\em Function takes in as parameters\+: (iz,a) where \textquotesingle{}iz\textquotesingle{} is the atomic number and \textquotesingle{}a\textquotesingle{} is the atomic mass. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+integer, parameter \mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}} = 120
+\begin{DoxyCompactList}\small\item\em number of atoms in the table ordered by atomic number \end{DoxyCompactList}\item 
+integer, parameter \mbox{\hyperlink{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}{n\+\_\+range}} = 35
+\begin{DoxyCompactList}\small\item\em number of atomic masses associated with each atomic number \end{DoxyCompactList}\item 
+integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) \mbox{\hyperlink{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}{a\+\_\+min}}
+\begin{DoxyCompactList}\small\item\em a data statement containing the minimum atomic mass associated with each of the n\+\_\+atoms \end{DoxyCompactList}\item 
+integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) \mbox{\hyperlink{namespacenucleus__m_ac8aa001386cf3938a2be5b5ec45d0c8d}{a\+\_\+max}}
+\begin{DoxyCompactList}\small\item\em a data statement containing the maximum atomic mass associated with each of the n\+\_\+atoms \end{DoxyCompactList}\item 
+real(8), dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}, \mbox{\hyperlink{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}{n\+\_\+range}}) \mbox{\hyperlink{namespacenucleus__m_aadb2a0e0828722e6e3f118cdf1b07f50}{rr}}
+\begin{DoxyCompactList}\small\item\em a data statement containing the rrms values for each atomic mass associated with each atomic number \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacenucleus__m_aa70383e98e9176269442449160eaaea0}\label{namespacenucleus__m_aa70383e98e9176269442449160eaaea0}} 
+\index{nucleus\_m@{nucleus\_m}!rrms\_value@{rrms\_value}}
+\index{rrms\_value@{rrms\_value}!nucleus\_m@{nucleus\_m}}
+\subsubsection{\texorpdfstring{rrms\_value()}{rrms\_value()}}
+{\footnotesize\ttfamily real(8) function nucleus\+\_\+m\+::rrms\+\_\+value (\begin{DoxyParamCaption}\item[{integer}]{iz,  }\item[{integer}]{a }\end{DoxyParamCaption})}
+
+
+
+Function takes in as parameters\+: (iz,a) where \textquotesingle{}iz\textquotesingle{} is the atomic number and \textquotesingle{}a\textquotesingle{} is the atomic mass. 
+
+If the parameters iz,a are in the table rr, then use the corresponding rrms value associated with the iz,a pair. Otherwise the function will handle calculating an approximate value for the rrms value. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacenucleus__m_ac8aa001386cf3938a2be5b5ec45d0c8d}\label{namespacenucleus__m_ac8aa001386cf3938a2be5b5ec45d0c8d}} 
+\index{nucleus\_m@{nucleus\_m}!a\_max@{a\_max}}
+\index{a\_max@{a\_max}!nucleus\_m@{nucleus\_m}}
+\subsubsection{\texorpdfstring{a\_max}{a\_max}}
+{\footnotesize\ttfamily integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) nucleus\+\_\+m\+::a\+\_\+max}
+
+
+
+a data statement containing the maximum atomic mass associated with each of the n\+\_\+atoms 
+
+\mbox{\Hypertarget{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}\label{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}} 
+\index{nucleus\_m@{nucleus\_m}!a\_min@{a\_min}}
+\index{a\_min@{a\_min}!nucleus\_m@{nucleus\_m}}
+\subsubsection{\texorpdfstring{a\_min}{a\_min}}
+{\footnotesize\ttfamily integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) nucleus\+\_\+m\+::a\+\_\+min}
+
+
+
+a data statement containing the minimum atomic mass associated with each of the n\+\_\+atoms 
+
+\mbox{\Hypertarget{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}\label{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}} 
+\index{nucleus\_m@{nucleus\_m}!n\_atoms@{n\_atoms}}
+\index{n\_atoms@{n\_atoms}!nucleus\_m@{nucleus\_m}}
+\subsubsection{\texorpdfstring{n\_atoms}{n\_atoms}}
+{\footnotesize\ttfamily integer parameter nucleus\+\_\+m\+::n\+\_\+atoms = 120}
+
+
+
+number of atoms in the table ordered by atomic number 
+
+\mbox{\Hypertarget{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}\label{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}} 
+\index{nucleus\_m@{nucleus\_m}!n\_range@{n\_range}}
+\index{n\_range@{n\_range}!nucleus\_m@{nucleus\_m}}
+\subsubsection{\texorpdfstring{n\_range}{n\_range}}
+{\footnotesize\ttfamily integer parameter nucleus\+\_\+m\+::n\+\_\+range = 35}
+
+
+
+number of atomic masses associated with each atomic number 
+
+\mbox{\Hypertarget{namespacenucleus__m_aadb2a0e0828722e6e3f118cdf1b07f50}\label{namespacenucleus__m_aadb2a0e0828722e6e3f118cdf1b07f50}} 
+\index{nucleus\_m@{nucleus\_m}!rr@{rr}}
+\index{rr@{rr}!nucleus\_m@{nucleus\_m}}
+\subsubsection{\texorpdfstring{rr}{rr}}
+{\footnotesize\ttfamily real(8), dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}, \mbox{\hyperlink{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}{n\+\_\+range}}) nucleus\+\_\+m\+::rr}
+
+
+
+a data statement containing the rrms values for each atomic mass associated with each atomic number 
+
