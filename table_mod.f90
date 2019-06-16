@@ -231,7 +231,7 @@ CONTAINS
          rrms_value = rr(iz, i)
      End if
      If  ( rrms_value == 0.d0 ) then
-         rrms_value = 0.836**(1/3) + 0.570
+         rrms_value = 0.836*a**(1/3.d0) + 0.570
      End if
    END FUNCTION RRMS_value
 
