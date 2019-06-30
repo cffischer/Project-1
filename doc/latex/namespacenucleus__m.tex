@@ -1,37 +1,57 @@
 \hypertarget{namespacenucleus__m}{}\section{nucleus\+\_\+m Module Reference}
 \label{namespacenucleus__m}\index{nucleus\_m@{nucleus\_m}}
+
+
+This module stores all the root-\/mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.)  
+
+
 \subsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-real(8) function \mbox{\hyperlink{namespacenucleus__m_aa70383e98e9176269442449160eaaea0}{rrms\+\_\+value}} (iz, a)
-\begin{DoxyCompactList}\small\item\em Function takes in as parameters\+: (iz,a) where \textquotesingle{}iz\textquotesingle{} is the atomic number and \textquotesingle{}a\textquotesingle{} is the atomic mass. \end{DoxyCompactList}\end{DoxyCompactItemize}
+real(8) function \mbox{\hyperlink{namespacenucleus__m_a83e8714be10756711874d134c66bcf73}{rrms\+\_\+value}} (z, a)
+\begin{DoxyCompactList}\small\item\em This function returns the tabulated value for the give charge Z and mass A, if available, and from the formula proposed by Johnson and Soff (Johnson et al.) otherwise. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 integer, parameter \mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}} = 120
-\begin{DoxyCompactList}\small\item\em number of atoms in the table ordered by atomic number \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em the number of atoms in the table ordered by atomic number \end{DoxyCompactList}\item 
 integer, parameter \mbox{\hyperlink{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}{n\+\_\+range}} = 35
-\begin{DoxyCompactList}\small\item\em number of atomic masses associated with each atomic number \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em a parameter that defines the range of atomic masses (a\+\_\+min, a\+\_\+min +n\+\_\+range -\/1)to be incuded \end{DoxyCompactList}\item 
 integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) \mbox{\hyperlink{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}{a\+\_\+min}}
-\begin{DoxyCompactList}\small\item\em a data statement containing the minimum atomic mass associated with each of the n\+\_\+atoms \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em the smallest atomic mass for a given nuclear charge included in the Angeli et al. table \end{DoxyCompactList}\item 
 integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) \mbox{\hyperlink{namespacenucleus__m_ac8aa001386cf3938a2be5b5ec45d0c8d}{a\+\_\+max}}
-\begin{DoxyCompactList}\small\item\em a data statement containing the maximum atomic mass associated with each of the n\+\_\+atoms \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em the largest atomic mass for a given nuclear charge included in the Angeli et al. table \end{DoxyCompactList}\item 
 real(8), dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}, \mbox{\hyperlink{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}{n\+\_\+range}}) \mbox{\hyperlink{namespacenucleus__m_aadb2a0e0828722e6e3f118cdf1b07f50}{rr}}
-\begin{DoxyCompactList}\small\item\em a data statement containing the rrms values for each atomic mass associated with each atomic number \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em an array containing the tabulated values of rrms, such that, \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+This module stores all the root-\/mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.) 
+
+When values are not available the defaut formula is taken to be \begin{DoxyVerb}    rrms = 0.836*a**(1/3) + 0.570
+\end{DoxyVerb}
+
+
+shown to be a good approximation for Z $<$ 91 by (Johnson et al.)
+
+References\+:
+
+I. Angeli and K.\+P. Marinova, Atomic Data and Nuclear Data Tables 99 (2013) 69–95,
+
+W.\+R. Johnson, G.\+Soff, Atomic Data and Nuclear Data Tables \{\textbackslash{}bf 33\}, p.\+405 (1985) 
 
 \subsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespacenucleus__m_aa70383e98e9176269442449160eaaea0}\label{namespacenucleus__m_aa70383e98e9176269442449160eaaea0}} 
+\mbox{\Hypertarget{namespacenucleus__m_a83e8714be10756711874d134c66bcf73}\label{namespacenucleus__m_a83e8714be10756711874d134c66bcf73}} 
 \index{nucleus\_m@{nucleus\_m}!rrms\_value@{rrms\_value}}
 \index{rrms\_value@{rrms\_value}!nucleus\_m@{nucleus\_m}}
 \subsubsection{\texorpdfstring{rrms\_value()}{rrms\_value()}}
-{\footnotesize\ttfamily real(8) function nucleus\+\_\+m\+::rrms\+\_\+value (\begin{DoxyParamCaption}\item[{integer}]{iz,  }\item[{integer}]{a }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily real(8) function nucleus\+\_\+m\+::rrms\+\_\+value (\begin{DoxyParamCaption}\item[{integer}]{z,  }\item[{integer}]{a }\end{DoxyParamCaption})}
 
 
 
-Function takes in as parameters\+: (iz,a) where \textquotesingle{}iz\textquotesingle{} is the atomic number and \textquotesingle{}a\textquotesingle{} is the atomic mass. 
+This function returns the tabulated value for the give charge Z and mass A, if available, and from the formula proposed by Johnson and Soff (Johnson et al.) otherwise. 
 
-If the parameters iz,a are in the table rr, then use the corresponding rrms value associated with the iz,a pair. Otherwise the function will handle calculating an approximate value for the rrms value. 
+
 
 \subsection{Variable Documentation}
 \mbox{\Hypertarget{namespacenucleus__m_ac8aa001386cf3938a2be5b5ec45d0c8d}\label{namespacenucleus__m_ac8aa001386cf3938a2be5b5ec45d0c8d}} 
@@ -42,7 +62,7 @@ If the parameters iz,a are in the table rr, then use the corresponding rrms valu
 
 
 
-a data statement containing the maximum atomic mass associated with each of the n\+\_\+atoms 
+the largest atomic mass for a given nuclear charge included in the Angeli et al. table 
 
 \mbox{\Hypertarget{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}\label{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}} 
 \index{nucleus\_m@{nucleus\_m}!a\_min@{a\_min}}
@@ -52,7 +72,7 @@ a data statement containing the maximum atomic mass associated with each of the 
 
 
 
-a data statement containing the minimum atomic mass associated with each of the n\+\_\+atoms 
+the smallest atomic mass for a given nuclear charge included in the Angeli et al. table 
 
 \mbox{\Hypertarget{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}\label{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}} 
 \index{nucleus\_m@{nucleus\_m}!n\_atoms@{n\_atoms}}
@@ -62,7 +82,7 @@ a data statement containing the minimum atomic mass associated with each of the 
 
 
 
-number of atoms in the table ordered by atomic number 
+the number of atoms in the table ordered by atomic number 
 
 \mbox{\Hypertarget{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}\label{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}} 
 \index{nucleus\_m@{nucleus\_m}!n\_range@{n\_range}}
@@ -72,7 +92,7 @@ number of atoms in the table ordered by atomic number
 
 
 
-number of atomic masses associated with each atomic number 
+a parameter that defines the range of atomic masses (a\+\_\+min, a\+\_\+min +n\+\_\+range -\/1)to be incuded 
 
 \mbox{\Hypertarget{namespacenucleus__m_aadb2a0e0828722e6e3f118cdf1b07f50}\label{namespacenucleus__m_aadb2a0e0828722e6e3f118cdf1b07f50}} 
 \index{nucleus\_m@{nucleus\_m}!rr@{rr}}
@@ -82,5 +102,12 @@ number of atomic masses associated with each atomic number
 
 
 
-a data statement containing the rrms values for each atomic mass associated with each atomic number 
+an array containing the tabulated values of rrms, such that, 
 
+\begin{DoxyVerb}  for 0 < j <= n_range,
+
+  rr(z, j) = rrms(z, a_min(z) + j-1)
+\end{DoxyVerb}
+
+
+A value of 0.\+0000 is stored for values of j when the corresponding rrms has not been tabulated. 

@@ -1,25 +1,40 @@
-
 !======================================================================
- Module Nucleus_m
-!======================================================================
-!  RRMS values for the periodic table
-!I. Angeli and K.P. Marinova, Atomic Data and Nuclear Data Tables 99 (2013) 69–95,
-! When values are not available the defaut formula is taken to be
-!    rrms = 0.836*a**(1/3) + 0.570
-!  shown to be a good approximation for Z < 91 by
-!W.R. Johnson, G.Soff, Atomic Data and Nuclear Data Tables {\bf 33}, p.405 (1985)
+!>This module stores all the root-mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.)
+!!
+!! When values are not available the defaut formula is taken to be
+!!
+!!         rrms = 0.836*a**(1/3) + 0.570
+!!
+!! shown to be a good approximation for Z < 91 by (Johnson et al.)
+!!
+!! References:
+!!
+!! I. Angeli and K.P. Marinova, Atomic Data and Nuclear Data Tables 99 (2013) 69–95,
+!!
+!! W.R. Johnson, G.Soff, Atomic Data and Nuclear Data Tables {\bf 33}, p.405 (1985)
 !----------------------------------------------------------------------
 
+ Module Nucleus_m
+!======================================================================
+
+
     Implicit none
-    !>number of atoms in the table ordered by atomic number
+    !>the number of atoms in the table ordered by atomic number
     Integer, parameter :: n_atoms = 120
-    !>number of atomic masses associated with each atomic number
+    !>a parameter that defines the range of atomic masses (a_min, a_min +n_range -1)to be incuded
     Integer, parameter :: n_range = 35
-    !>a data statement containing the minimum atomic mass associated with each of the n_atoms
+    !>the smallest atomic mass for a given nuclear charge included in the Angeli et al. table
     Integer  :: a_min(n_atoms)
-    !>a data statement containing the maximum atomic mass associated with each of the n_atoms
+    !>the largest atomic mass for a given nuclear charge included in the Angeli et al. table
     Integer  :: a_max(n_atoms)
-    !>a data statement containing the rrms values for each atomic mass associated with each atomic number
+    !>an array containing the tabulated values of rrms, such that,
+    !!
+    !!      for 0 < j <= n_range,
+    !!
+    !!      rr(z, j) = rrms(z, a_min(z) + j-1)
+    !!
+    !!A value of 0.0000 is stored for values of j when the corresponding rrms has not been tabulated.
+
     Real(8)  :: rr(n_atoms, n_range)
 
     Data a_min /  1,  3,  6,  7, 10, 12, 14, 16, 19, 17, 20, 24, 27, 28, 31, 32, &
@@ -38,7 +53,6 @@
           0,232,  0,238,  0,244,243,248,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, &
           0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0 /
 
-!  Note the range rr(1:n) where rr(i) == rrms(z, a_min + i-1)
     Data rr(  1, 1: 3) / 0.8783,2.1421,1.7591 /
     Data rr(  2, 1: 6) / 1.9661,1.6755,0.0000,2.0660,0.0000,1.9239 /
     Data rr(  3, 1: 6) / 2.5890,2.4440,2.3390,2.2450,0.0000,2.4820 /
@@ -211,27 +225,28 @@
 
 CONTAINS
 !======================================================================
-!> Function takes in as parameters: (iz,a) where 'iz' is the atomic number and 'a' is the atomic mass
-!!
-!> If the parameters iz,a are in the table rr,
-!! then use the corresponding rrms value associated with the iz,a pair.
-!! Otherwise the function will handle calculating an approximate value for the rrms value.
-   Real(8) Function RRMS_value(iz,a)
+!> This function returns the tabulated value for the give charge Z and
+!! mass A, if available, and from the formula proposed by Johnson and Soff
+!!(Johnson et al.) otherwise.
+
+   Real(8) Function RRMS_value(z,a)
 !======================================================================
 !  RRMS values for the given Z and A
 !----------------------------------------------------------------------
      IMPLICIT NONE
-     INTEGER  i,a, iz, n
+     INTEGER  i,a, z, n
+     Real aa
 
+     aa=a
      rrms_value  = 0.d0
-     i = a - a_min(iz) +1
-     n = a_max(iz) - a_min(iz) +1
+     i = a - a_min(z) +1
+     n = a_max(z) - a_min(z) +1
 
      If ( i >= 1  .and. i <= n ) then
-         rrms_value = rr(iz, i)
+         rrms_value = rr(z, i)
      End if
      If  ( rrms_value == 0.d0 ) then
-         rrms_value = 0.836*a**(1/3.d0) + 0.570
+         rrms_value = 0.836*aa**(1/3.d0) + 0.570
      End if
    END FUNCTION RRMS_value
 
@@ -242,16 +257,16 @@ CONTAINS
      Use Nucleus_m
 
      IMPLICIT NONE
-     INTEGER  a, iz
+     INTEGER  a, z
 
      print *, 'ENter the atomic number and mass nubmer'
-     Read  *, iz, a
-     If (iz >= n_atoms ) Print *, ' Atomic number out of range'
+     Read  *, z, a
+     If (z >= n_atoms ) Print *, ' Atomic number out of range'
 
-     Print *, ' Atomic number           = ', iz
+     Print *, ' Atomic number           = ', z
      Print *, ' Nucleur Mass number     = ', a
 
-     Print *, ' RRMS =', rrms_value(iz,a)
+     Print *, ' RRMS =', rrms_value(z,a)
 
     End program test_nucleus
 
