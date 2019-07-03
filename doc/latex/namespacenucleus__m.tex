@@ -2,7 +2,7 @@
 \label{namespacenucleus__m}\index{nucleus\_m@{nucleus\_m}}
 
 
-This module stores all the root-\/mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.)  
+This module stores all the root-\/mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.) as a function of the atomic number Z and atomic mass A.  
 
 
 \subsection*{Functions/\+Subroutines}
@@ -18,15 +18,15 @@ integer, parameter \mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c
 integer, parameter \mbox{\hyperlink{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}{n\+\_\+range}} = 35
 \begin{DoxyCompactList}\small\item\em a parameter that defines the range of atomic masses (a\+\_\+min, a\+\_\+min +n\+\_\+range -\/1)to be incuded \end{DoxyCompactList}\item 
 integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) \mbox{\hyperlink{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}{a\+\_\+min}}
-\begin{DoxyCompactList}\small\item\em the smallest atomic mass for a given nuclear charge included in the Angeli et al. table \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em For each atomic number, the smallest atomic mass for a given nuclear charge included in the Angeli et al. table. \end{DoxyCompactList}\item 
 integer, dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}) \mbox{\hyperlink{namespacenucleus__m_ac8aa001386cf3938a2be5b5ec45d0c8d}{a\+\_\+max}}
-\begin{DoxyCompactList}\small\item\em the largest atomic mass for a given nuclear charge included in the Angeli et al. table \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em For each atomic number, the largest atomic mass for a given nuclear charge included in the Angeli et al. table. \end{DoxyCompactList}\item 
 real(8), dimension(\mbox{\hyperlink{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}{n\+\_\+atoms}}, \mbox{\hyperlink{namespacenucleus__m_adf953c9196f6870fe5e502b4f40bea48}{n\+\_\+range}}) \mbox{\hyperlink{namespacenucleus__m_aadb2a0e0828722e6e3f118cdf1b07f50}{rr}}
 \begin{DoxyCompactList}\small\item\em an array containing the tabulated values of rrms, such that, \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This module stores all the root-\/mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.) 
+This module stores all the root-\/mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.) as a function of the atomic number Z and atomic mass A. 
 
 When values are not available the defaut formula is taken to be \begin{DoxyVerb}    rrms = 0.836*a**(1/3) + 0.570
 \end{DoxyVerb}
@@ -62,7 +62,7 @@ This function returns the tabulated value for the give charge Z and mass A, if a
 
 
 
-the largest atomic mass for a given nuclear charge included in the Angeli et al. table 
+For each atomic number, the largest atomic mass for a given nuclear charge included in the Angeli et al. table. 
 
 \mbox{\Hypertarget{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}\label{namespacenucleus__m_a8541e730d34d4c5cbb0ca885c9c5cc35}} 
 \index{nucleus\_m@{nucleus\_m}!a\_min@{a\_min}}
@@ -72,7 +72,7 @@ the largest atomic mass for a given nuclear charge included in the Angeli et al.
 
 
 
-the smallest atomic mass for a given nuclear charge included in the Angeli et al. table 
+For each atomic number, the smallest atomic mass for a given nuclear charge included in the Angeli et al. table. 
 
 \mbox{\Hypertarget{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}\label{namespacenucleus__m_a97ff520812e294bf26a6b2c330f211e5}} 
 \index{nucleus\_m@{nucleus\_m}!n\_atoms@{n\_atoms}}

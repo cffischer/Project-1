@@ -1,5 +1,6 @@
 !======================================================================
 !>This module stores all the root-mean square radii (rrms) of atomic nuclei that were tabulated by (Angeli et al.)
+!! as a function of the atomic number Z and atomic mass A.
 !!
 !! When values are not available the defaut formula is taken to be
 !!
@@ -23,9 +24,9 @@
     Integer, parameter :: n_atoms = 120
     !>a parameter that defines the range of atomic masses (a_min, a_min +n_range -1)to be incuded
     Integer, parameter :: n_range = 35
-    !>the smallest atomic mass for a given nuclear charge included in the Angeli et al. table
+    !>For each atomic number, the smallest atomic mass for a given nuclear charge included in the Angeli et al. table
     Integer  :: a_min(n_atoms)
-    !>the largest atomic mass for a given nuclear charge included in the Angeli et al. table
+    !>For each atomic number, the largest atomic mass for a given nuclear charge included in the Angeli et al. table
     Integer  :: a_max(n_atoms)
     !>an array containing the tabulated values of rrms, such that,
     !!
